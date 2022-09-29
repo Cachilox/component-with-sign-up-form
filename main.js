@@ -20,28 +20,35 @@ button.addEventListener("click", (e) => {
 function validateEmail(valueInput, divInput, divError) {
     let regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
     regExp.test(valueInput) ? hideError(divInput, divError) : showError(divInput, divError, "Looks like this is not an email");
-    emailInput.value = "";
 }
 
 function validatePassword(passwordInput, divInput, passError) {
     let regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
     regExp.test(passwordInput) ? hideError(divInput, passError) : showError(divInput, passError, "Password cannot be empty");
-    divInput.value = "";
 }
 
 function validateEmpty(valueInput, divInput, divError, nameError) {
     valueInput.length == 0 ? showError(divInput, divError, nameError) : hideError(divInput, divError);
-    divInput.value = "";
 }
 
 function showError(divInput, divError, error) {
-    divInput.style.border = "1px solid red"
+    divInput.classList.add("errorMessage")
     divError.innerHTML = `<img class="icon-error" src="./images/icon-error.svg" alt="icon error">
     <p class="error">${error}</p>`;
 
 }
 
 function hideError(divInput, divError) {
-    divInput.style.border = "1px solid hsl(246, 25%, 77%)"
+    divInput.classList.add("hideError")
     divError.innerHTML = ``;
+    // Swal.fire({
+    //     icon: 'success',
+    //     title: 'Thank you!',
+    //     text: 'Your form submission has been received.!',
+    // });
 }
+
+passwordInput.addEventListener("keyup", () => {
+    const counterPassword = document.getElementById("counter");
+    counterPassword.textContent = passwordInput.value.length;
+})

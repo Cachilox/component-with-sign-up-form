@@ -36,6 +36,8 @@
 
           <input id="passwordInput" type="password" placeholder="Password">
           <div id="passError" class="error-container"></div>
+          <p class="valid">Valid password contains 8 or more characters with a mix of lowercase and uppercase letters, numbers & symbols (!@#$%^&*)</p>
+          <p class="password__length">Password length: <span id="counter">0</span></p>
       
           <input id="button" type="submit" value="Claim your free trial">
         </form>
@@ -51,7 +53,7 @@
       Coded by <a href="https://github.com/Cachilox" target="_blank">Mariano Alvarez</a>.
     </p>
   </footer>
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./main.js"></script>
 </body>
 </html>
